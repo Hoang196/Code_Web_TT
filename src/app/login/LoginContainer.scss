@@ -1,0 +1,82 @@
+.login__page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login__page { 
+  min-height: 100vh;
+}
+.login-form {
+  margin: 0;
+  background-color: #f9f9fc;
+  border-radius: 8px;
+  box-shadow: 0 0 13px 0 ;
+
+  .button {
+    background-color: #000;
+    color: #fff;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  .button:hover {
+    background-color: #fff;
+    color: #555;
+  }
+}
+.login {
+  display: flex;
+  justify-content: center;
+  margin-top: -25px;
+}
+
+.login__footer {
+  text-align: center;
+  padding: 6px 0 8px 0;
+  font-size: 15px;
+}
+
+@media (min-width: 1140px) {
+  .login__page { 
+    background: url(../../images/bgr.jpg) top center / cover no-repeat;
+  }
+  .login-form {
+    padding: 2rem;
+    width: 500px;
+
+    .button {
+      padding: 6px 35px;
+      margin-left: 31px;
+    }
+  }
+}
+
+@media (min-width: 740px) and (max-width: 1139px){
+  .login__page { 
+    background: url(../../images/bgr11.jpg) top center / cover no-repeat;
+  }
+  .login-form {
+    padding: 2rem;
+    width: 500px;
+
+    .button {
+      padding: 6px 40px;
+      margin-left: 24px;
+    }
+  }
+}
+
+@media (max-width: 739px) {
+  .login__page { 
+    background: url(../../images/bgr11.jpg) top center / cover no-repeat;
+    overflow: hidden;
+  }
+  .login-form {
+    padding: 1.5rem;
+    width: 350px;
+
+    .button {
+      padding: 6px 38px;
+    }
+  }
+}
