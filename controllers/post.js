@@ -108,12 +108,16 @@ export const editPostData = async (req, res, next) => {
     try {
         const newPost = req.body;
         const { _id, ...post } = newPost;
+        const { name, brand, type, amount, description } = post;
         const convertedImages = newPost.image_url.split(' ');
         const [mainImg, ...desImgs] = convertedImages;
-        const postNew = {
-            ...post,
-            main_image: mainImg,
-            image_url: desImgs,
+        let postNew;
+        if (name != "" && brand != "" && type != "" && amount != null && description != "") {
+            postNew = {
+                ...post,
+                main_image: mainImg,
+                image_url: desImgs,
+            }
         }
         await PostModel.findByIdAndUpdate(_id, postNew)
         res.status(200).json({

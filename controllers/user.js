@@ -25,7 +25,6 @@ export const editUserData = async (req, res, next) => {
         const checkUser = await UserModel.findOne({ _id: _id })
 
         if (regex.test(email)) {
-            console.log(email)
             if (checkUser.email !== email) {
                 const checkEmail = await UserModel.findOne({ email: email })
                 if (checkEmail) {
@@ -57,6 +56,7 @@ export const editUserData = async (req, res, next) => {
             status_code: 200,
             detail: "Sửa thông tin thành công!"
         });
+
     } catch (err) {
         res.status(500).json({ detail: "Sửa thông tin không thành công!" });
     }

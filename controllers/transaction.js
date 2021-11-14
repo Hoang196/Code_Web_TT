@@ -91,8 +91,27 @@ export const getProductWantToTrade = async (req, res, next) => {
 export const createTransaction = async (req, res, next) => {
     try {
         const newTran = req.body;
-        const tran = new TransactionModel(newTran);
-        await tran.save();
+        const { from_post_id, to_post_id, from_user_id, to_user_id, ...rest } = newTran;
+
+        const checkTran = await TransactionModel.findOne({
+            from_post_id: from_post_id,
+            to_post_id: to_post_id,
+            from_user_id: from_user_id,
+            to_user_id: to_user_id
+        })
+
+        if (checkTran) {
+            await TransactionModel.findByIdAndUpdate(checkTran._id, {
+                from_post_id: from_post_id,
+                to_post_id: to_post_id,
+                from_user_id: from_user_id,
+                to_user_id: to_user_id
+            })
+        } else {
+            const tran = new TransactionModel(newTran);
+            await tran.save();
+        }
+
         res.status(200).json({
             status_code: 200,
             detail: "Thêm giao dịch thành công!"
